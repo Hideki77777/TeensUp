@@ -29,7 +29,6 @@ export default function LessonTooltip({
   totalLicoes,
   open,
   onClose,
-  placement = 'above',
 }: LessonTooltipProps) {
   const router = useRouter()
   const isComplete = status === 'complete'
@@ -51,9 +50,6 @@ export default function LessonTooltip({
     <AnimatePresence>
       {open && (
         <>
-          {/* Overlay transparente para fechar */}
-          <div className="fixed inset-0 z-[60]" onClick={onClose} />
-
           <motion.div
             className="absolute z-[80] w-[280px] max-w-[calc(100vw-2rem)] bottom-0 left-1/2 -translate-x-1/2"
             initial={{ opacity: 0, y: 10, scale: 0.96 }}
@@ -64,11 +60,7 @@ export default function LessonTooltip({
             <div>
               <div className="relative bg-[#EE6A29] rounded-[16px] px-4 py-3 shadow-[0_10px_26px_rgba(0,0,0,0.35)] border border-[#F58B4E]">
                 <div
-                  className={`absolute right-3 w-5 h-5 bg-[#EE6A29] rotate-45 border-[#F58B4E] ${
-                    placement === 'below'
-                      ? '-top-3 border-l border-t'
-                      : '-bottom-3 border-r border-b'
-                  }`}
+                  className="absolute right-3 -bottom-3 w-5 h-5 bg-[#EE6A29] rotate-45 border-r border-b border-[#F58B4E]"
                 />
 
                 <p className="text-white/90 text-xs font-bold uppercase tracking-wider mb-1">
@@ -109,7 +101,7 @@ export default function LessonTooltip({
               </div>
 
               <motion.div
-                className={placement === 'below' ? 'mt-2 flex justify-end pr-2' : 'mt-2 flex justify-end pr-2'}
+                className="mt-2 flex justify-end pr-2"
                 initial={{ y: 8, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1, type: 'spring', stiffness: 340, damping: 20 }}
