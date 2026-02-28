@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import type { Licao, StatusLicao } from '@/types'
@@ -34,6 +35,25 @@ export default function LessonTooltip({
   const isComplete = status === 'complete'
   const { coracoes } = useGamificacaoStore()
   const [showSemVidaInfo, setShowSemVidaInfo] = useState(false)
+  const tooltipRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (!open) return
+
+    const handleOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null
+      if (!target) return
+      if (tooltipRef.current?.contains(target)) return
+      onClose()
+    }
+
+    document.addEventListener('mousedown', handleOutside, true)
+    document.addEventListener('touchstart', handleOutside, true)
+    return () => {
+      document.removeEventListener('mousedown', handleOutside, true)
+      document.removeEventListener('touchstart', handleOutside, true)
+    }
+  }, [open, onClose])
 
   const handleStart = () => {
     if (coracoes <= 0) {
@@ -57,7 +77,7 @@ export default function LessonTooltip({
             exit={{ opacity: 0, y: 10, scale: 0.96 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
           >
-            <div>
+            <div ref={tooltipRef}>
               <div className="relative bg-[#EE6A29] rounded-[16px] px-4 py-3 shadow-[0_10px_26px_rgba(0,0,0,0.35)] border border-[#F58B4E]">
                 <div
                   className="absolute right-3 -bottom-3 w-5 h-5 bg-[#EE6A29] rotate-45 border-r border-b border-[#F58B4E]"
