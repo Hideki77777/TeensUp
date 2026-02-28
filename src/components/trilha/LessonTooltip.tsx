@@ -42,6 +42,7 @@ export default function LessonTooltip({
     const handleOutside = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node | null
       if (!target) return
+      if (target instanceof Element && target.closest('[data-lesson-node="true"]')) return
       if (tooltipRef.current?.contains(target)) return
       onClose()
     }

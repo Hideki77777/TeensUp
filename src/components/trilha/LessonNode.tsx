@@ -25,6 +25,7 @@ export default function LessonNode({ status, tipo, cor, onClick, isActive }: Les
 
   return (
     <motion.button
+      data-lesson-node="true"
       onClick={isLocked ? undefined : onClick}
       disabled={isLocked}
       whileTap={isLocked ? {} : { scale: 0.92 }}
