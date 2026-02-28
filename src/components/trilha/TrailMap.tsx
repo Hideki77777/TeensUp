@@ -142,13 +142,18 @@ export default function TrailMap({ trilhas }: TrailMapProps) {
                 />
 
                 {isTooltipOpen && (
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-[70]">
+                  <div
+                    className={`absolute left-1/2 -translate-x-1/2 z-[70] ${
+                      numero <= 2 ? 'top-full mt-2' : 'bottom-full mb-2'
+                    }`}
+                  >
                     <LessonTooltip
                       licao={licao}
                       trilhaSlug={tooltipTrilhaSlug}
                       status={tooltipStatus}
                       licaoNumero={tooltipNumero}
                       totalLicoes={todasLicoes.length}
+                      placement={numero <= 2 ? 'below' : 'above'}
                       open={isTooltipOpen}
                       onClose={() => setTooltipLicao(null)}
                     />
