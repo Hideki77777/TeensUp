@@ -12,9 +12,10 @@ import { CONQUISTAS } from '@/content/conquistas'
 import { TRILHAS } from '@/content/trilhas'
 import { getLicoesOrdenadas } from '@/content/trilhas'
 import { useShareStore } from '@/store/shareStore'
-import { Heart, Zap, Gem, Trophy, BookOpen, CalendarDays, ShoppingBag, Medal, Share2, Copy, Bot } from 'lucide-react'
+import { Heart, Zap, Gem, Trophy, BookOpen, CalendarDays, ShoppingBag, Medal, Share2, Copy } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import { TrilhaIcon } from '@/components/ui/AppIcon'
+import Image from 'next/image'
 
 export default function PerfilPage() {
   const { xpTotal, gemas, coracoes, streak } = useGamificacaoStore()
@@ -76,8 +77,15 @@ export default function PerfilPage() {
       <main className="flex-1 px-4 py-2">
         {/* Avatar placeholder */}
         <div className="flex flex-col items-center py-6 gap-3">
-          <div className="w-20 h-20 rounded-full bg-[#EE6A29] flex items-center justify-center">
-            <Bot size={38} className="text-white" />
+          <div className="w-20 h-20 rounded-full bg-[#1A2B33] border border-[#243540] flex items-center justify-center overflow-hidden">
+            <Image
+              src="/Tela%20-%20Robo%20com%20olho.svg"
+              alt="Você"
+              width={66}
+              height={66}
+              style={{ width: 66, height: 'auto' }}
+              priority
+            />
           </div>
           <h1 className="text-xl font-black text-white">Você</h1>
           <div className="flex items-center gap-1 bg-[#FFD700]/10 border border-[#FFD700]/30 rounded-full px-3 py-1">

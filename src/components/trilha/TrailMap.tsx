@@ -162,23 +162,23 @@ export default function TrailMap({ trilhas }: TrailMapProps) {
         <div className="w-full px-4 mt-4 mb-8">
           <div className="rounded-3xl border border-[#355166] bg-[#10232E]/75 p-5 shadow-[0_10px_28px_rgba(0,0,0,0.25)]">
             <div className="mx-auto w-fit rounded-md bg-[#344D5E] px-3 py-1 text-[11px] font-black uppercase tracking-wide text-[#AFC5D0]">
-              A seguir
+              Bloqueado
             </div>
 
             <div className="mt-3 flex items-center justify-center gap-2">
               <Lock size={18} className="text-white/90" />
-              <p className="text-white text-3xl font-black leading-none">Seção 4</p>
+              <p className="text-white text-3xl font-black leading-none">Em breve...</p>
             </div>
 
             <p className="mt-3 text-center text-[#7A9BA8] text-base leading-relaxed font-semibold">
-              Use frases em conversas sobre tópicos do dia a dia.
+              Novas atividades serão liberadas em breve.
             </p>
 
             <button
               type="button"
               className="mt-4 w-full h-11 rounded-2xl border border-[#355166] bg-transparent text-[#4FC3FF] text-[15px] font-black uppercase tracking-wide"
             >
-              Quer pular pra cá?
+              Em breve...
             </button>
           </div>
         </div>
